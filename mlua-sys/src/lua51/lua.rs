@@ -89,6 +89,7 @@ pub type lua_Alloc =
     unsafe extern "C-unwind" fn(ud: *mut c_void, ptr: *mut c_void, osize: usize, nsize: usize) -> *mut c_void;
 
 #[cfg_attr(all(windows, raw_dylib), link(name = "lua51", kind = "raw-dylib"))]
+#[cfg_attr(all(target_os = "android", feature = "luajit"), link(name = "luajit-5.1"))]
 extern "C-unwind" {
     //
     // State manipulation
